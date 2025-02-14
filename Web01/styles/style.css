@@ -1,0 +1,60 @@
+/*
+Synataxe CSS
+
+selector {
+    vlastnost1: hodnota;
+    vlastnost2: hodnota;
+    vlastnost3: hodnota;
+    vlastnost4: hodnota;
+}
+*/
+
+body{
+    background-color: lightskyblue;
+}
+
+h1{
+    color: white;
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.page-wrapper{
+    /*max-width: 80%;*/
+    width: 80%;
+    margin: 0 auto; /*по центрику*/
+    background-color: aqua;
+    padding: 20px;
+}
+
+nav ol{
+    display: flex;
+    list-style: none;
+    gap: 10px;
+    padding: 0;
+
+}
+
+nav a{
+    background-color: burlywood;
+    color: white;
+    text-decoration: none;
+    padding: 5px;
+    border-radius: 15px;
+}
+
+nav a:hover{
+    color: rgb(207, 42, 166);
+    background-color: blueviolet;
+}
+
+.grid-container{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+}
+
+.card{
+    background-color: chartreuse;
+    padding: 20px;
+    border-radius: 10px;
+}
