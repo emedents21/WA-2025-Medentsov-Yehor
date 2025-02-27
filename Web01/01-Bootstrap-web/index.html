@@ -13,13 +13,96 @@
     <nav>
         <div class = "container" >
             <a href="#">Bootstra[ Example Page</a>
-            <a href="#">Tlacitka</a>
-            <a href="#">Karty</a>
-            <a href="#">Tabulky</a>
+            <a href="#buttons">Tlacitka</a>
+            <a href="#cards">Karty</a>
+            <a href="#tables">Tabulky</a>
         </div>
     </nav>
 
+    <header>
+            <h1>Vitejte na me strance o toolkitu Bootstrap</h1>
+            <p>Budu zde prezentovat vybrane komponenty</p>
+            <a href="#buttons" class="btn btn-light btn-lg">Zacit</a>
+    </header>
 
+
+    <!-- Tracitka-->
+    <section class="container" id="buttons">
+        <h2>Tlacitka</h2>
+        <p>Bootstrap umoznuje snadne stylovani tlacitek pomoci trid jako napr. <code>btn-primary</code></p>
+
+        <!-- Ukazka tlacitek-->
+            <div>
+                <button class="btn btn-primary">Primary button</button>
+                <button class="btn btn-warning">Warning button</button>
+            </div>
+
+        <!-- Kod tlacitek-->
+
+            <pre>
+                <code>
+                    &lt;button class="btn btn-primary"&gt;Primary button&lt;/button&gt;
+                    &lt;button class="btn btn-warning"&gt;Warning button&lt;/button&gt;
+                </code>
+            </pre>
+    </section>
+
+    <!-- Sekce : Karty-->
+
+    <section class="container" id="cards">
+        <h2>Karty</h2>
+        <p>Karta v Bootstrapu je super zpusob jak struktorovat obsah.</p>
+
+        <!-- Ukazka karty-->
+
+        <div class="card mx-auto">   
+            <div class="card-body">
+                <h3 class="card-title">Ukazkova karta</h3>
+                <p class = "card-text">Toto je ukazka karty v Bootstrapu.</p>
+                <a href="#" class="btn btn-info">Detail</a>
+            </div>
+        </div>
+
+
+        <!-- Kod karty-->
+    </section>
+
+    <!-- Sekce : Tabulky-->
+    <section class="container" id="tables">
+        <h2>Tabulky</h2>
+        <p>tabulky lze v Bootstrapu stylovat pomoci trid jako napr. <code>table-striped</code></p>
+
+        <!-- Ukazka tabulky-->
+        <table class="table table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Jmeno</th>
+                    <th>Email</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Jan Novak</td>
+                    <td>jan.novak@tul.cz</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Jana Novakova</td>
+                    <td>jana.novakova@tul.cz</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Ihor Pinchinko</td>
+                    <td>ihor.panchenko@sosal.cz</td>
+                </tr>
+            </tbody>
+        </table>
+
+         <!-- Kod tabulky-->
+    </section>
 
 
 
