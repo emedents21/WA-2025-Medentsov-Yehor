@@ -13,20 +13,36 @@
     <h1>Lorem, ipsumg</h1>
     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quibusdam excepturi nobis illo sed corrupti sint at sapiente quas asperiores suscipit, corporis eveniet molestiae magni nisi molestias adipisci doloremque deserunt in.</p>
     <!-- Navigace -->
-    <nav class="navbar navbar-dark bg-dark">
-        <div class = "container" >
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
             <a class="navbar-brand" href="#">Bootstrap Example Page</a>
-            <div>
-                <ul class="navbar-nav ">
-                    <li class="nav-item"><a class="nav-link nav-link active" href="#buttons">Tlacitka</a></li>
+    
+            <!-- Кнопка для мобильного меню (hamburger) -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <!-- Навигационные ссылки -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#buttons">Tlacitka</a></li>
                     <li class="nav-item"><a class="nav-link" href="#cards">Karty</a></li>
                     <li class="nav-item"><a class="nav-link" href="#tables">Tabulky</a></li>
                 </ul>
             </div>
         </div>
     </nav>
+    
 
-    <header>
+    <div class="container mt-4">
+        <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+
+    <header class="container mt-4">
             <h1>Vitejte na me strance o toolkitu Bootstrap</h1>
             <p>Budu zde prezentovat vybrane komponenty</p>
             <a href="#buttons" class="btn btn-light btn-lg">Zacit</a>
@@ -62,7 +78,6 @@
 
         <!-- Ukazka karty-->
 
-
         <!-- Kod karty-->
 
         <pre>
@@ -83,6 +98,8 @@
     <section class="container mt-4" id="tables">
         <h2>Tabulky</h2>
         <p>tabulky lze v Bootstrapu stylovat pomoci trid jako napr. <code>table-striped</code></p>
+
+        
 
         <!-- Ukazka tabulky-->
         <pre>
@@ -206,5 +223,13 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+    <script>
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function() {
+                document.querySelectorAll('.nav-link').forEach(item => item.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
 </body>
 </html>
