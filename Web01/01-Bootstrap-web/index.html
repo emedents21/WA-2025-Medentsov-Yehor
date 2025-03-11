@@ -9,7 +9,15 @@
 
    
 </head>
-<body>
+<body data-bs-theme="light">
+    <div class="container text-center mt-4">
+        <p>Vyberte režim: světlý nebo tmavý.</p>
+
+        <!-- Tlačítka pro přepínání režimů -->
+        <button id="lightModeBtn" class="btn btn-outline-primary">Světlý režim</button>
+        <button id="darkModeBtn" class="btn btn-outline-primary">Tmavý režim</button>
+    </div>
+
     <h1>Lorem, ipsumg</h1>
     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quibusdam excepturi nobis illo sed corrupti sint at sapiente quas asperiores suscipit, corporis eveniet molestiae magni nisi molestias adipisci doloremque deserunt in.</p>
     <!-- Navigace -->
@@ -29,8 +37,12 @@
                     <li class="nav-item"><a class="nav-link active" href="#buttons">Tlacitka</a></li>
                     <li class="nav-item"><a class="nav-link" href="#cards">Karty</a></li>
                     <li class="nav-item"><a class="nav-link" href="#tables">Tabulky</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#form">Formulář</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#modal">Modální okno</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#carousel">Carousel</a></li>
                 </ul>
             </div>
+
         </div>
     </nav>
     
@@ -48,50 +60,52 @@
             <a href="#buttons" class="btn btn-light btn-lg">Zacit</a>
     </header>
 
-
-    <!-- Tracitka-->
+    <!-- Tlacitka -->
     <section class="container mt-4" id="buttons">
-        <h2>Tlacitka</h2>
-        <p>Bootstrap umoznuje snadne stylovani tlacitek pomoci trid jako napr. <code>btn-primary</code></p>
+        <h2>Tlačítka</h2>
+        <p>Bootstrap umožňuje snadné stylování tlačítek pomocí tříd jako např. <code>btn-primary</code></p>
 
-        <!-- Ukazka tlacitek-->
-            <div>
-                <button class="btn btn-primary">Primary button</button>
-                <button class="btn btn-warning">Warning button</button>
-            </div>
+        <!-- Ukázka tlačítek -->
+        <div class="text-center">
+            <button class="btn btn-primary rounded-pill shadow">Primary button</button>
+            <button class="btn btn-warning rounded-pill shadow">Warning button</button>
+        </div>
 
-        <!-- Kod tlacitek-->
-
-            <pre>
-                <code class="language-html">
-                    &lt;button class="btn btn-primary"&gt;Primary button&lt;/button&gt;
-                    &lt;button class="btn btn-warning"&gt;Warning button&lt;/button&gt;
-                </code>
-            </pre>
-    </section>
-
-    <!-- Sekce : Karty-->
-
-    <section class="container mt-4" id="cards">
-        <h2 class="mb-5">Karty</h2>
-        <p>Karta v Bootstrapu je super zpusob jak struktorovat obsah.</p>
-
-        <!-- Ukazka karty-->
-
-        <!-- Kod karty-->
-
+        <!-- Kód tlačítek -->
         <pre>
             <code class="language-html">
-                &lt;div class="card mx-auto"&gt;   
-                    &lt;div class="card-body"&gt;
-                        &lt;h3 class="card-title"&gt;Ukazkova karta&lt;/h3&gt;
-                        &lt;p class = "card-text"&gt;Toto je ukazka karty v Bootstrapu.&lt;/p&gt;
-                        &lt;a href="#" class="btn btn-info"&gt;Detail&lt;/a&gt;
-                    &lt;/div&gt;
-                &lt;/div>
+                &lt;button class="btn btn-primary rounded-pill shadow"&gt;Primary button&lt;/button&gt;
+                &lt;button class="btn btn-warning rounded-pill shadow"&gt;Warning button&lt;/button&gt;
             </code>
         </pre>
+    </section>
 
+    <!-- Sekce : Karty -->
+    <section class="container mt-4" id="cards">
+        <h2 class="mb-5">Karty</h2>
+        <p>Karta v Bootstrapu je skvělý způsob, jak strukturovat obsah.</p>
+
+        <!-- Ukázka karty -->
+        <div class="card mx-auto w-50 shadow-sm">
+            <div class="card-body bg-light p-3 rounded-3">
+                <h3 class="card-title">Ukázková karta</h3>
+                <p class="card-text">Toto je ukázka karty v Bootstrapu.</p>
+                <a href="#" class="btn btn-info">Detail</a>
+            </div>
+        </div>
+
+        <!-- Kód karty -->
+        <pre>
+            <code class="language-html">
+                &lt;div class="card mx-auto w-50 shadow-sm"&gt;
+                    &lt;div class="card-body bg-light p-3 rounded-3"&gt;
+                        &lt;h3 class="card-title"&gt;Ukázková karta&lt;/h3&gt;
+                        &lt;p class="card-text"&gt;Toto je ukázka karty v Bootstrapu.&lt;/p&gt;
+                        &lt;a href="#" class="btn btn-info"&gt;Detail&lt;/a&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            </code>
+        </pre>
     </section>
 
     <!-- Sekce : Tabulky-->
@@ -99,9 +113,35 @@
         <h2>Tabulky</h2>
         <p>tabulky lze v Bootstrapu stylovat pomoci trid jako napr. <code>table-striped</code></p>
 
-        
-
         <!-- Ukazka tabulky-->
+        <table class="table table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Jmeno</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Jan Novak</td>
+                    <td>jan.novak@tul.cz</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Jana Novakova</td>
+                    <td>jana.novakova@tul.cz</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Ihor Pinchinko</td>
+                    <td>ihor.panchenko@sosal.cz</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Kod tabulky-->
         <pre>
             <code class="language-html">
                 &lt;table class="table table-striped"&gt;
@@ -132,9 +172,80 @@
                 &lt;/table&gt;
             </code>
         </pre>
-         <!-- Kod tabulky-->
     </section>
 
+    <!-- Sekce : Formulář -->
+    <section class="container mt-4" id="form">
+        <h2>Formulář</h2>
+        <form>
+            <div class="mb-3">
+                <label for="name" class="form-label">Jméno</label>
+                <input type="text" class="form-control" id="name" placeholder="Zadejte své jméno">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Zadejte svůj email">
+            </div>
+            <button type="submit" class="btn btn-primary">Odeslat</button>
+        </form>
+    </section>
+
+    <!-- Sekce : Modální okno -->
+    <section class="container mt-4" id="modal">
+        <h2>Modální okno</h2>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Otevřít okno</button>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Nadpis okna</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">Toto je obsah modálního okna.</div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Zavřít</button>
+                        <button type="button" class="btn btn-primary">Uložit změny</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container mt-4" id="carousel">
+        <h2>Carousel</h2>
+        <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="images/1.png" class="d-block w-100" style="height: 300px; object-fit: cover;" alt="Obrázek 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="images/1.png" class="d-block w-100" style="height: 300px; object-fit: cover;" alt="Obrázek 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="images/1.png" class="d-block w-100" style="height: 300px; object-fit: cover;" alt="Obrázek 3">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Sekce : Můj názor -->
+    <section class="container mt-4" id="my-opinion">
+        <h2 class="fw-bold mb-3">Můj názor</h2>
+        <p class="lead">
+            Bootstrap je skvělý nástroj pro rychlý vývoj responzivních a moderních webových stránek. 
+            Umožňuje snadno vytvářet stylové komponenty bez nutnosti psát vlastní CSS od nuly. 
+            Díky rozsáhlé dokumentaci a komunitě je práce s ním efektivní a přehledná.
+        </p>
+        <p class="text-muted fst-italic">
+            Nicméně, pro pokročilejší a unikátní designy může být nutné Bootstrap přizpůsobit nebo kombinovat s vlastním CSS.
+        </p>
+    </section>
 
     <div class="accordion" id="accordionExample">
         <div class="accordion-item">
@@ -220,6 +331,17 @@
         </div>
       </div>
 
+    <!-- Patička (Footer) -->
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <p>&copy; 2025 Yehor Medentsov. Všechna práva vyhrazena.</p>
+        <p>
+            <a href="#" class="text-white">O nás</a> |
+            <a href="#" class="text-white">Kontakt</a> |
+            <a href="#" class="text-white">Podmínky použití</a>
+        </p>
+    </footer>
+    
+
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
@@ -229,6 +351,15 @@
                 document.querySelectorAll('.nav-link').forEach(item => item.classList.remove('active'));
                 this.classList.add('active');
             });
+        });
+    </script>
+    <script>
+        document.getElementById("lightModeBtn").addEventListener("click", function() {
+            document.body.setAttribute("data-bs-theme", "light");
+        });
+
+        document.getElementById("darkModeBtn").addEventListener("click", function() {
+            document.body.setAttribute("data-bs-theme", "dark");
         });
     </script>
 </body>
