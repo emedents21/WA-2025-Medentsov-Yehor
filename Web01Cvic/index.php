@@ -1,3 +1,3 @@
 <?php 
-    echo "TEST výpisu";
+    echo "hello world!";
 ?>
