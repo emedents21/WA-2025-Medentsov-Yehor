@@ -31,12 +31,10 @@ class Book {
         ]);
     }
 
-    public function getAll()
-    {
+    public function getAll() {
         $sql = "SELECT * FROM books ORDER BY created_at DESC";
         $stmt = $this->db->prepare($sql);
-        $stmt-> execute();
+        $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-
 }
