@@ -31,4 +31,35 @@ class Player {
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function getById($id) {
+        $sql = "SELECT * FROM players WHERE id = :id";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([':id' => $id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function update($id, $name, $position, $age, $nationality) {
+        $sql = "UPDATE players 
+        SET name = :name,
+            position = :position,
+            age = :age,
+            nationality = :nationality
+        WHERE id = :id";
+
+        $stmt = $this->db->prepare($sql);
+        return $stmt->execute([
+            ':id' => $id,
+            ':name' => $name,
+            ':position' => $position,
+            ':age' => $age,
+            ':nationality' => $nationality,
+
+        ]);
+    }
+    public function delete($id) {
+        $sql = "DELETE FROM players WHERE id = :id";
+        $stmt = $this->db->prepare($sql);
+        return $stmt->execute([':id' => $id]);
+    }
 }

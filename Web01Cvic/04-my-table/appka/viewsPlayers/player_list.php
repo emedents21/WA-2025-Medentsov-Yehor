@@ -35,7 +35,6 @@
         
         <h2>Výpis hráče</h2>
         
-        <!-- Проверка на пустой список игроков -->
         <?php if(!empty($players)): ?>
             <table class="table table-bordered table-hover">
                 <thead class="table-primary">
@@ -47,7 +46,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Перебор игроков -->
                     <?php foreach($players as $player): ?>
                         <tr>
                             <td><?= htmlspecialchars($player['name']) ?></td>
