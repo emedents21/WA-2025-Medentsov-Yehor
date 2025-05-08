@@ -81,8 +81,6 @@
                             </div>
                         </div>
 
-                        
-
                         <button type="submit" class="btn btn-success w-100">Registrovat se</button>
                     </form>
                 </div>

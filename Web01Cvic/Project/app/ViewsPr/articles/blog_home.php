@@ -8,15 +8,19 @@
   <link rel="stylesheet" href="../../../stylesPr/stylesPr.css">
 </head>
 <body>
-<header class="d-flex align-items-center">
-  <div class="container d-flex align-items-center">
-    <div class="logo-placeholder">Logo</div>
-    <div>
-      <h1 class="mb-0">Řízení IT projektů</h1>
-      <p class="mb-0">Technologický blog o projektovém managementu v IT</p>
+<header class="d-flex align-items-center py-3 border-bottom">
+  <div class="container d-flex justify-content-between align-items-center">
+    <div class="d-flex align-items-center">
+      <div class="logo-placeholder me-3">Logo</div>
+      <div>
+        <h1 class="mb-0 fs-4">Řízení IT projektů</h1>
+        <p class="mb-0 text-muted">Technologický blog o projektovém managementu v IT</p>
+      </div>
     </div>
+    <a href="../authPr/register.php" class="btn btn-primary">Registrace</a>
   </div>
 </header>
+
 
 <main class="container">
   <section class="mb-5">
