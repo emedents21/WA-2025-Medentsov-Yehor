@@ -19,46 +19,48 @@
     </div>
   </header>
 
-  <!-- Добавляем flex-grow-1 -->
-  <main class="flex-grow-1 d-flex align-items-center justify-content-center">
-    <div class="container" style="max-width: 500px;">
-      <div class="card shadow-sm rounded-4">
-        <div class="card-body">
-          <h2 class="card-title mb-4 text-center">Vytvořit účet</h2>
-          <form id="registrationForm" action="../../ControllersPr/register.php" method="post">
+ <main class="flex-grow-1 d-flex align-items-center justify-content-center">
+  <div class="container" style="max-width: 500px;">
+    <div class="card shadow-sm rounded-4">
+      <div class="card-body p-4">
+        <h2 class="card-title mb-4 text-center">Vytvořit účet</h2>
+        <form id="registrationForm" action="../../ControllersPr/register.php" method="post" class="d-flex flex-column gap-3">
 
-            <div class="mb-3">
-              <label for="username" class="form-label">Uživatelské jméno</label>
-              <input type="text" class="form-control" id="username" name="username" required>
-            </div>
+          <div>
+            <label for="username" class="form-label">Uživatelské jméno</label>
+            <input type="text" class="form-control" id="username" name="username" required>
+          </div>
 
-            <div class="mb-3">
-              <label for="email" class="form-label">E-mail</label>
-              <input type="email" class="form-control" id="email" name="email" required>
-            </div>
+          <div>
+            <label for="email" class="form-label">E-mail</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+          </div>
 
-            <div class="mb-3">
-              <label for="password" class="form-label">Heslo</label>
-              <input type="password" class="form-control" id="password" name="password"
-                     pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$"
-                     title="Min. 8 znaků, 1 velké písmeno a 1 číslo" required>
-            </div>
+          <div>
+            <label for="password" class="form-label">Heslo</label>
+            <input type="password" class="form-control" id="password" name="password"
+                   pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$"
+                   title="Min. 8 znaků, 1 velké písmeno a 1 číslo" required>
+          </div>
 
-            <div class="mb-3">
-                <label for="password_confirm" class="form-label">Potvrzení hesla</label>
-                <input type="password" id="password_confirm" name="password_confirm" class="form-control" required>
-                <div id="passwordMatchMessage" class="form-text text-danger d-none">
-                    Hesla se neshodují.
+          <div>
+            <label for="password_confirm" class="form-label">Potvrzení hesla</label>
+            <input type="password" id="password_confirm" name="password_confirm" class="form-control" required>
+            <div id="passwordMatchMessage" class="form-text text-danger d-none">
+              Hesla se neshodují.
             </div>
-            <div class="d-grid">
-              <button type="submit" class="btn btn-primary">Registrovat se</button>
-            </div>
+          </div>
 
-          </form>
-        </div>
+          <div class="d-grid mt-2">
+            <button type="submit" class="btn btn-primary btn-lg">Registrovat se</button>
+          </div>
+
+        </form>
       </div>
     </div>
-  </main>
+  </div>
+</main>
+
 
   <footer class="text-center py-3 mt-auto border-top">
     <div class="container">

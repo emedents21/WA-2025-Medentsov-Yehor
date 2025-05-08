@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 require_once '../ModelsPr/Database.php';
 require_once '../ModelsPr/User.php';
 
@@ -29,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    if ($userModel->register($username, $email, $password)) {
+    if ($userModel->register($username, $email, $hashedPassword)) {
         header("Location: ../VeiwsPr/authPr/login.php");
         exit();
     } else {
