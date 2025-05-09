@@ -18,6 +18,7 @@
       </div>
     </div>
     <a href="../authPr/register.php" class="btn btn-primary">Registrace</a>
+    <a href="../authPr/login.php" class="btn btn-primary">Přihlášení</a>
   </div>
 </header>
 

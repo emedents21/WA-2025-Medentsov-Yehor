@@ -28,7 +28,7 @@ if (session_status() == PHP_SESSION_NONE) {
             $_SESSION['username'] = $user['username'];
             $_SESSION['role'] = $user['role'];
 
-            header("Location: ../controllers/book_list.php");
+            header("Location: ../ControllersPr/post_list.php");
             exit();
         } else {
             die('Neplatné přihlašovací údaje.');
@@ -36,3 +36,6 @@ if (session_status() == PHP_SESSION_NONE) {
     } else {
         die('Neplatný požadavek.');
     }
+///////
+
+    
