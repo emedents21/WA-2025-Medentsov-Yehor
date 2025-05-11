@@ -17,10 +17,12 @@
         <p class="mb-0 text-muted">Technologický blog o projektovém managementu v IT</p>
       </div>
     </div>
+    <a href="nastenka.php" class="btn btn-primary">Nastenka</a>
     <a href="../authPr/register.php" class="btn btn-primary">Registrace</a>
     <a href="../authPr/login.php" class="btn btn-primary">Přihlášení</a>
   </div>
 </header>
+
 
 
 <main class="container">

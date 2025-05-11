@@ -35,10 +35,15 @@ class Post {
     }
     
     public function getAll() {
-        $sql = "SELECT * FROM blog_posts ORDER BY created_at DESC";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        try {
+            $query = "SELECT * FROM blog_posts ORDER BY created_at DESC";
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            echo "Chyba při načítání příspěvků: " . $e->getMessage();
+            return [];
+        }
     }
 }
 ?>

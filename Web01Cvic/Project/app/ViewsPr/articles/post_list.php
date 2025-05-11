@@ -1,3 +1,23 @@
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+require_once __DIR__ . '/../../ControllersPr/PostController.php';
+
+// Получение данных о текущем пользователе
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+if (isset($_SESSION['user_id'])) {
+    $userId = $_SESSION['user_id'];  // Идентификатор текущего пользователя
+    $controller = new PostController();
+    $posts = $controller->getUserPosts($userId);  // Получаем посты только для текущего пользователя
+} else {
+    $posts = [];
+    echo '<div class="alert alert-warning">Musíte být přihlášeni, abyste viděli vaše příspěvky.</div>';
+}
+?>
+
 <!DOCTYPE html>
 <html lang="cs">
 <head>
@@ -25,40 +45,32 @@
   </header>
 
   <main class="flex-grow-1 d-flex align-items-center justify-content-center">
-    <div class="container">
-      <?php  
-        echo 'Session ID: ' . session_id();
-        session_regenerate_id(true);
-        echo 'New Session ID: ' . session_id();
-      ?>
-      <h2>Výpis postu</h2>
-      <?php if(!empty($posts)): ?>
-        <!-- <h3>Hrubý výpis knih</h3> -->
-        <?php // var_dump($books); ?>
-        <!-- <h3>Lepší výpis knih</h3> -->
-        <pre><?php // print_r($books); ?></pre>
-        <h3>Tabulkový výpis postu</h3>
-        <table class="table table-bordered table-hover">
-          <thead class="table-primary">
-            <tr>
-              <th>Název</th>
-              <th>Obsah</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php foreach($posts as $post): ?>
-              <tr>
-                <td><?= htmlspecialchars($post['title']) ?></td>
-                <td><?= htmlspecialchars($post['content']) ?></td>
-              </tr>    
-            <?php endforeach; ?>    
-          </tbody>
-        </table>
-      <?php else: ?>
-        <div class="alert alert-info">Žádny post nebyl nalezena</div>
-      <?php endif; ?>       
-    </div>
+   <div class="container">
+    <h2 class="mb-4">Nástěnka – veřejné příspěvky</h2>
+
+    <?php if (!empty($posts)): ?>
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        <?php foreach ($posts as $post): ?>
+          <div class="col">
+            <div class="card h-100 shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title"><?= htmlspecialchars($post['title']) ?></h5>
+                <p class="card-text"><?= nl2br(htmlspecialchars(mb_strimwidth($post['content'], 0, 200, '...'))) ?></p>
+              </div>
+              <div class="card-footer text-muted">
+                Publikováno: <?= htmlspecialchars(date('d.m.Y H:i', strtotime($post['created_at']))) ?>
+              </div>
+            </div>
+          </div>
+        <?php endforeach; ?>
+      </div>
+    <?php else: ?>
+      <div class="alert alert-info">Žádný příspěvek zatím nebyl přidán.</div>
+    <?php endif; ?>
+  </div>
   </main>
+
+
 
   <footer class="text-center py-3 mt-auto border-top">
     <div class="container">
