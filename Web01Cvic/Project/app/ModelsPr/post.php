@@ -34,16 +34,20 @@ class Post {
         }
     }
     
-    public function getAll() {
-        try {
-            $query = "SELECT * FROM blog_posts ORDER BY created_at DESC";
-            $stmt = $this->conn->prepare($query);
-            $stmt->execute();
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
-            echo "Chyba při načítání příspěvků: " . $e->getMessage();
-            return [];
-        }
+public function getAll() {
+    try {
+        $query = "SELECT blog_posts.*, blog_users.username 
+                  FROM blog_posts 
+                  JOIN blog_users ON blog_posts.user_id = blog_users.id 
+                  ORDER BY blog_posts.created_at DESC";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        echo "Chyba při načítání veřejných příspěvků: " . $e->getMessage();
+        return [];
     }
+}
+
 }
 ?>

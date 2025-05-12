@@ -46,7 +46,7 @@ if (isset($_SESSION['user_id'])) {
 
   <main class="flex-grow-1 d-flex align-items-center justify-content-center">
    <div class="container">
-    <h2 class="mb-4">Nástěnka – veřejné příspěvky</h2>
+    <h2 class="mb-4">Moje příspěvky</h2>
 
     <?php if (!empty($posts)): ?>
       <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">

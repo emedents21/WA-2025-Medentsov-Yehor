@@ -34,29 +34,31 @@ $posts = $controller->getPublicPosts();
 </header>
 
 <main class="flex-grow-1 py-5">
-  <div class="container">
-    <h2 class="mb-4">Nástěnka – veřejné příspěvky</h2>
-
-    <?php if (!empty($posts)): ?>
-      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-        <?php foreach ($posts as $post): ?>
-          <div class="col">
-            <div class="card h-100 shadow-sm">
-              <div class="card-body">
-                <h5 class="card-title"><?= htmlspecialchars($post['title']) ?></h5>
-                <p class="card-text"><?= nl2br(htmlspecialchars(mb_strimwidth($post['content'], 0, 200, '...'))) ?></p>
-              </div>
-              <div class="card-footer text-muted">
-                Publikováno: <?= htmlspecialchars(date('d.m.Y H:i', strtotime($post['created_at']))) ?>
-              </div>
+    <div class="container">
+        <h2 class="mb-4">Nástěnka – veřejné příspěvky</h2>
+        <?php if (!empty($posts)): ?>
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                <?php foreach ($posts as $post): ?>
+                    <div class="col">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title"><?= htmlspecialchars($post['title']) ?></h5>
+                                <p class="card-text"><?= nl2br(htmlspecialchars(mb_strimwidth($post['content'], 0, 200, '...'))) ?></p>
+                            </div>
+                            <div class="card-footer text-muted">
+                                <small>
+                                    Autor: <?= htmlspecialchars($post['username']) ?><br>
+                                    Publikováno: <?= htmlspecialchars(date('d.m.Y H:i', strtotime($post['created_at']))) ?>
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
             </div>
-          </div>
-        <?php endforeach; ?>
-      </div>
-    <?php else: ?>
-      <div class="alert alert-info">Žádný příspěvek zatím nebyl přidán.</div>
-    <?php endif; ?>
-  </div>
+        <?php else: ?>
+            <div class="alert alert-info">Žádný příspěvek zatím nebyl přidán.</div>
+        <?php endif; ?>
+    </div>
 </main>
 
 
