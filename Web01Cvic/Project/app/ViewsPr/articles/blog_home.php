@@ -8,22 +8,24 @@
   <link rel="stylesheet" href="../../../stylesPr/stylesPr.css">
 </head>
 <body>
-<header class="d-flex align-items-center py-3 border-bottom">
-  <div class="container d-flex justify-content-between align-items-center">
-    <div class="d-flex align-items-center">
+<header class="bg-primary text-white shadow-sm">
+  <div class="container py-3 d-flex flex-wrap align-items-center justify-content-between">
+    <div class="d-flex align-items-center mb-2 mb-lg-0">
       <div class="logo-placeholder me-3">Logo</div>
       <div>
-        <h1 class="mb-0 fs-4">Řízení IT projektů</h1>
-        <p class="mb-0 text-muted">Technologický blog o projektovém managementu v IT</p>
+        <h1 class="fs-5 mb-0">Řízení IT projektů</h1>
+        <p class="mb-0 small text-light">Technologický blog o projektovém managementu v IT</p>
       </div>
     </div>
-    <a href="nastenka.php" class="btn btn-primary">Nastenka</a>
-    <a href="../authPr/register.php" class="btn btn-primary">Registrace</a>
-    <a href="../authPr/login.php" class="btn btn-primary">Přihlášení</a>
+
+    <nav class="nav nav-pills flex-row">
+      <!-- <a href="index.php" class="nav-link text-white px-3">Domů</a> -->
+      <a href="nastenka.php" class="nav-link text-white px-3">Nástěnka</a>
+      <a href="../authPr/register.php" class="nav-link text-white px-3">Registrace</a>
+      <a href="../authPr/login.php" class="nav-link text-white px-3">Přihlášení</a>
+    </nav>
   </div>
 </header>
-
-
 
 <main class="container">
   <section class="mb-5">

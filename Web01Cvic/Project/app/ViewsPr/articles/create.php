@@ -19,15 +19,29 @@ if (!isset($_SESSION['user_id'])) {
 </head>
 <body class="d-flex flex-column min-vh-100">
 
-  <header class="d-flex align-items-center py-3 border-bottom mb-4">
-    <div class="container d-flex align-items-center">
+<header class="bg-primary text-white shadow-sm">
+  <div class="container py-3 d-flex flex-wrap align-items-center justify-content-between">
+    <div class="d-flex align-items-center mb-2 mb-lg-0">
       <div class="logo-placeholder me-3">Logo</div>
       <div>
-        <h1 class="mb-0">Řízení IT projektů</h1>
-        <p class="mb-0">Příspěvky</p>
+        <h1 class="fs-5 mb-0">
+          <a href="../ViewsPr/articles/blog_home.php" class="nav-link text-white px-0">Řízení IT projektů</a>
+        </h1>
+        <p class="mb-0 small text-light">Technologický blog o projektovém managementu v IT</p>
+        <?php if (isset($_SESSION['username'])): ?>
+          <p class="mb-0 small text-white mt-1">
+            Přihlášen jako: <strong><?= htmlspecialchars($_SESSION['username']) ?></strong>
+          </p>
+        <?php endif; ?>
       </div>
     </div>
-  </header>
+
+    <nav class="nav nav-pills flex-row align-items-center gap-2">
+      <a href="nastenka.php" class="nav-link text-white px-3">Nástěnka</a>
+      <a href="../../authPr/login.php" class="nav-link text-white px-3">Odhlaseni</a>
+    </nav>
+  </div>
+</header>
 
 <div class="container mt-4">
     <h2>Vytvořit nový příspěvek</h2>
@@ -53,6 +67,9 @@ if (!isset($_SESSION['user_id'])) {
     </div>
   </footer>
 
+</body>
+</html>
+
 <!-- Kontrola hesel v JS -->
 <script>
     const form = document.getElementById('registrationForm');
@@ -70,5 +87,3 @@ if (!isset($_SESSION['user_id'])) {
     });
 </script>
 
-</body>
-</html>
