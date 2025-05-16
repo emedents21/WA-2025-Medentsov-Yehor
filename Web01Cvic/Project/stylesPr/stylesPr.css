@@ -1,5 +1,5 @@
 body {
-    background-color: #ffffff;
+    background-color: #af5353;
   }
   header {
     background-color: #0d6efd;
@@ -70,5 +70,12 @@ body {
   transition: 0.3s ease;
   box-shadow: 0 0.5rem 1.2rem rgba(0, 0, 0, 0.15);
 }
+
+.auth-bg {
+  background-color: #2e7dcc !important;
+  min-height: 100vh;
+}
+
+
 
   

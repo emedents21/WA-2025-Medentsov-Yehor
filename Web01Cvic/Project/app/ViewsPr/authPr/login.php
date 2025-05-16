@@ -25,7 +25,7 @@
   </div>
 </header>
 
-<main class="flex-grow-1 d-flex align-items-center justify-content-center py-5">
+<main class="flex-grow-1 d-flex align-items-center justify-content-center py-5 auth-bg">
   <div class="container" style="max-width: 480px;">
     <div class="card shadow-sm rounded-4 border-0">
       <div class="card-body px-4 py-5">
@@ -52,6 +52,7 @@
     </div>
   </div>
 </main>
+
 
 
   <footer class="text-center py-3 mt-auto border-top">

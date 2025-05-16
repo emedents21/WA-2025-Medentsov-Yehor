@@ -13,6 +13,12 @@ class User {
         return $stmt->fetch() !== false;
     }
 
+    public function existsByEmail($email) {
+        $stmt = $this->db->prepare("SELECT id FROM blog_users WHERE email = ?");
+        $stmt->execute([$email]);
+        return $stmt->fetch() !== false;
+    }
+
     public function register($username, $email, $password) {
         $stmt = $this->db->prepare("
             INSERT INTO blog_users (username, email, password)

@@ -29,11 +29,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($userModel->existsByUsername($username)) {
         die('Uživatelské jméno je již obsazené.');
     }
+    
+    if($userModel->existsByEmail($email)){
+        die('Email je již obsazený.');
+    }
 
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
     if ($userModel->register($username, $email, $hashedPassword)) {
-        header("Location: ../VeiwsPr/authPr/login.php");
+        header("Location: ../ViewsPr/authPr/login.php");
         exit();
     } else {
         die('Registrace se nezdařila.');

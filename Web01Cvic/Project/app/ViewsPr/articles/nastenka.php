@@ -63,11 +63,11 @@ $posts = $controller->getPublicPosts();
   </div>
 </main>
 
-<footer class="text-center py-3 border-top">
-  <div class="container">
-    &copy; 2025 Yehor Medentsov – Blog o řízení IT projektů
-  </div>
-</footer>
+ <footer class="text-center py-3 mt-auto border-top">
+    <div class="container">
+      &copy; 2025 Yehor Medentsov – Blog o řízení IT projektů
+    </div>
+  </footer>
 
 </body>
 </html>
