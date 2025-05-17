@@ -12,20 +12,22 @@ if (!isset($_SESSION['user_id'])) {
 <html lang="cs">
 <head>
   <meta charset="UTF-8">
-  <title>Registrace – Řízení IT projektů</title>
+  <title>Přidat příspěvek – Řízení IT projektů</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="../../../stylesPr/stylesPr.css">
 </head>
-<body class="d-flex flex-column min-vh-100">
+<body class="d-flex flex-column min-vh-100 bg-light">
 
-<header class="bg-primary text-white shadow-sm">
-  <div class="container py-3 d-flex flex-wrap align-items-center justify-content-between">
-    <div class="d-flex align-items-center mb-2 mb-lg-0">
-      <div class="logo-placeholder me-3">Logo</div>
+<!-- Header -->
+<header class="bg-primary text-white shadow-sm mb-4">
+  <div class="container py-3 d-flex flex-wrap align-items-center justify-content-between rounded-4">
+    <div class="d-flex align-items-center mb-2 mb-lg-0 gap-3">
+      <div class="rounded-circle bg-white d-flex align-items-center justify-content-center" style="width:46px; height:46px;">
+        <span class="fw-bold text-primary fs-5">IT</span>
+      </div>
       <div>
-        <h1 class="fs-5 mb-0">
-          <a href="../ViewsPr/articles/blog_home.php" class="nav-link text-white px-0">Řízení IT projektů</a>
+        <h1 class="fs-4 mb-1 fw-bold text-white">
+          <a href="../articles/blog_home.php" class="text-white text-decoration-none d-inline-block">Řízení IT projektů</a>
         </h1>
         <p class="mb-0 small text-light">Technologický blog o projektovém managementu v IT</p>
         <?php if (isset($_SESSION['username'])): ?>
@@ -35,55 +37,44 @@ if (!isset($_SESSION['user_id'])) {
         <?php endif; ?>
       </div>
     </div>
-
-    <nav class="nav nav-pills flex-row align-items-center gap-2">
+    <nav class="nav nav-pills flex-row gap-3 align-items-center">
       <a href="nastenka.php" class="nav-link text-white px-3">Nástěnka</a>
-      <a href="../../authPr/login.php" class="nav-link text-white px-3">Odhlaseni</a>
+      <a href="../../authPr/login.php" class="nav-link text-white px-3">Odhlásit se</a>
     </nav>
   </div>
 </header>
 
-<div class="container mt-4">
-    <h2>Vytvořit nový příspěvek</h2>
-    <?php if (!empty($error)) : ?>
-        <div class="alert alert-danger"><?= htmlspecialchars($error) ?></div>
-    <?php endif; ?>
-    <form method="post" action="../../ControllersPr/PostController.php">
-        <div class="mb-3">
-            <label for="title" class="form-label">Název</label>
-            <input type="text" class="form-control" name="title" id="title" required>
-        </div>
-        <div class="mb-3">
-            <label for="content" class="form-label">Obsah</label>
-            <textarea class="form-control" name="content" id="content" rows="5" required></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Publikovat</button>
-    </form>
-</div>
-
-  <footer class="text-center py-3 mt-auto border-top">
-    <div class="container">
-      &copy; 2025 Yehor Medentsov – Blog o řízení IT projektů
+<main class="flex-grow-1 d-flex align-items-center justify-content-center py-5">
+  <div class="container" style="max-width: 560px;">
+    <div class="card shadow-sm border-0 rounded-4">
+      <div class="card-body px-4 py-5">
+        <h2 class="card-title text-center mb-4 fw-semibold">Vytvořit nový příspěvek</h2>
+        <?php if (!empty($error)) : ?>
+            <div class="alert alert-danger"><?= htmlspecialchars($error) ?></div>
+        <?php endif; ?>
+        <form method="post" action="../../ControllersPr/PostController.php" class="d-flex flex-column gap-4">
+          <div>
+            <label for="title" class="form-label fw-medium">Název</label>
+            <input type="text" class="form-control rounded-3" name="title" id="title" required>
+          </div>
+          <div>
+            <label for="content" class="form-label fw-medium">Obsah</label>
+            <textarea class="form-control rounded-3" name="content" id="content" rows="6" required></textarea>
+          </div>
+          <div class="d-grid mt-3">
+            <button type="submit" class="btn btn-primary btn-lg rounded-3">Publikovat</button>
+          </div>
+        </form>
+      </div>
     </div>
-  </footer>
+  </div>
+</main>
+
+<footer class="text-center py-4 mt-auto bg-dark text-white rounded-top-4">
+  <div class="container small">
+    &copy; 2025 Yehor Medentsov – Blog o řízení IT projektů
+  </div>
+</footer>
 
 </body>
 </html>
-
-<!-- Kontrola hesel v JS -->
-<script>
-    const form = document.getElementById('registrationForm');
-    const password = document.getElementById('password');
-    const confirm = document.getElementById('password_confirm');
-    const message = document.getElementById('passwordMatchMessage');
-
-    form.addEventListener('submit', function (e) {
-        if (password.value !== confirm.value) {
-            e.preventDefault();
-            message.classList.remove('d-none');
-        } else {
-            message.classList.add('d-none');
-        }
-    });
-</script>
-

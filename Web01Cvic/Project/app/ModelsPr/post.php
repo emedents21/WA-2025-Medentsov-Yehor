@@ -48,6 +48,35 @@ public function getAll() {
         return [];
     }
 }
+public function getById($id) {
+    $stmt = $this->conn->prepare("SELECT * FROM blog_posts WHERE id = ?");
+    $stmt->execute([$id]);
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
+public function delete($id) {
+    $stmt = $this->conn->prepare("DELETE FROM blog_posts WHERE id = ?");
+    return $stmt->execute([$id]);
+}
+
+public function update($id, $title, $content) {
+    $stmt = $this->conn->prepare("UPDATE blog_posts SET title = ?, content = ?, updated_at = NOW() WHERE id = ?");
+    return $stmt->execute([$title, $content, $id]);
+}
+public function getUserPosts($userId) {
+    try {
+        $query = "SELECT * FROM blog_posts WHERE user_id = :user_id ORDER BY created_at DESC";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        echo "Chyba při načítání příspěvků: " . $e->getMessage();
+        return [];
+    }
+}
+
+
 
 }
 ?>
