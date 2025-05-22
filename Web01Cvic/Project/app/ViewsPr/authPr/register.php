@@ -11,15 +11,14 @@ error_reporting(E_ALL);
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<!-- min-vh-100 и flex-column для “прижатого” футера -->
+
 <body class="d-flex flex-column min-vh-100 bg-light">
 
 <header class="bg-primary text-white shadow-sm mb-4">
   <div class="container py-3 d-flex flex-wrap align-items-center justify-content-between rounded-4">
     <div class="d-flex align-items-center mb-2 mb-lg-0 gap-3">
-      <!-- Логотип внутри шапки -->
       <div class="rounded-circle bg-white d-flex align-items-center justify-content-center" style="width:46px; height:46px;">
-        <span class="fw-bold text-primary fs-5">IT</span>
+        <img src="../../imagess/Logo.svg">     
       </div>
       <div>
         <h1 class="fs-4 mb-1 fw-bold text-white">

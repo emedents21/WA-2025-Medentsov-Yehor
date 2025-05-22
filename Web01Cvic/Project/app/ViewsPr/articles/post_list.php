@@ -14,6 +14,7 @@ if (isset($_SESSION['user_id'])) {
     $posts = [];
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="cs">
 <head>
@@ -21,7 +22,6 @@ if (isset($_SESSION['user_id'])) {
   <title>Moje příspěvky – Řízení IT projektů</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="../../stylesPr/stylesPr.css">
 </head>
 <body class="d-flex flex-column min-vh-100 bg-light">
 
@@ -29,11 +29,11 @@ if (isset($_SESSION['user_id'])) {
   <div class="container py-3 d-flex flex-wrap align-items-center justify-content-between rounded-4">
     <div class="d-flex align-items-center mb-2 mb-lg-0 gap-3">
       <div class="rounded-circle bg-white d-flex align-items-center justify-content-center" style="width:46px; height:46px;">
-        <span class="fw-bold text-primary fs-5">IT</span>
-      </div>
+            <img src="../../imagess/Logo.svg">     
+    </div>
       <div>
         <h1 class="fs-4 mb-1 fw-bold text-white">
-          <a href="../ViewsPr/articles/blog_home.php" class="text-white text-decoration-none d-inline-block">Řízení IT projektů</a>
+          <a href="blog_home.php" class="text-white text-decoration-none d-inline-block">Řízení IT projektů</a>
         </h1>
         <p class="mb-0 small text-light">Technologický blog o projektovém managementu v IT</p>
         <?php if (isset($_SESSION['username'])): ?>
@@ -43,12 +43,15 @@ if (isset($_SESSION['user_id'])) {
         <?php endif; ?>
       </div>
     </div>
-    <nav class="nav nav-pills flex-row gap-3 align-items-center">
-      <a href="../ViewsPr/articles/create.php" class="nav-link bg-white text-primary fw-semibold px-3 rounded">Přidat post</a>
-      <a href="../ViewsPr/articles/edit_delete.php" class="nav-link bg-white text-primary fw-semibold px-3 rounded">Editace přispěvků</a>
-      <a href="../ViewsPr/articles/nastenka.php" class="nav-link text-white px-3">Nástěnka</a>
-      <a href="../../authPr/login.php" class="nav-link text-white px-3">Odhlásit se</a>
-    </nav>
+      <nav class="nav nav-pills flex-row gap-3 align-items-center">
+        <a href="create.php" class="nav-link bg-white text-primary fw-semibold px-3 rounded">Přidat post</a>
+        <a href="edit_delete.php" class="nav-link bg-white text-primary fw-semibold px-3 rounded">Editace přispěvků</a>
+        <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
+          <a href="users_admin.php" class="nav-link bg-white text-danger fw-semibold px-3 rounded">Správa uživatelů</a>
+        <?php endif; ?>
+        <a href="../../ControllersPr/logout.php" class="nav-link text-white px-3">Odhlásit se</a> 
+      </nav>
+
   </div>
 </header>
 

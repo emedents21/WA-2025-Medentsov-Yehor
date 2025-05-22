@@ -22,12 +22,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $db = (new Database())->getConnection();
     $postModel = new Post($db);
 
-    // Только владелец поста или админ может редактировать
     $post = $postModel->getById($id);
     if ($post && ($post['user_id'] == $_SESSION['user_id'] || ($_SESSION['role'] ?? '') === 'admin')) {
         $success = $postModel->update($id, $title, $content);
         if ($success) {
-            header("Location: moje_prispevky.php?updated=1");
+            header("Location: ../../app/ViewsPr/articles/edit_delete.php?updated=1");
             exit();
         } else {
             echo "Chyba při aktualizaci příspěvku.";
@@ -38,3 +37,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 } else {
     echo "Neplatný požadavek.";
 }
+
+if ($success) {
+    header("Location: ../../app/ViewsPr/articles/edit_delete.php?updated=1");
+    exit();
+} else {
+    header("Location: ../../app/ViewsPr/articles/edit_delete.php?error=update");
+    exit();
+}
+

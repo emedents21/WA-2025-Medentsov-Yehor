@@ -1,7 +1,7 @@
 <?php
 
 class User {
-    private $db;
+    private $db; 
 
     public function __construct($db) {
         $this->db = $db;
@@ -31,5 +31,16 @@ class User {
         $stmt = $this->db->prepare("SELECT * FROM blog_users WHERE username = ?");
         $stmt->execute([$username]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function getAll() {
+        $stmt = $this->db->prepare("SELECT * FROM blog_users");
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function delete($id) {
+        $stmt = $this->db->prepare("DELETE FROM blog_users WHERE id=?");
+        return $stmt->execute([$id]);
     }
 }

@@ -15,11 +15,10 @@ if (isset($_GET['id'])) {
     $db = (new Database())->getConnection();
     $postModel = new Post($db);
 
-    // Только владелец поста или админ может удалить
     $post = $postModel->getById($id);
     if ($post && ($post['user_id'] == $_SESSION['user_id'] || ($_SESSION['role'] ?? '') === 'admin')) {
         if ($postModel->delete($id)) {
-            header("Location: moje_prispevky.php?deleted=1");
+            header("Location: ../../app/ViewsPr/articles/edit_delete.php?deleted=1");
             exit();
         } else {
             echo "Chyba při mazání příspěvku.";
@@ -30,3 +29,12 @@ if (isset($_GET['id'])) {
 } else {
     echo "Neplatný požadavek.";
 }
+
+if ($success) {
+    header("Location: ../../app/ViewsPr/articles/edit_delete.php?deleted=1");
+    exit();
+} else {
+    header("Location: ../../app/ViewsPr/articles/edit_delete.php?error=delete");
+    exit();
+}
+

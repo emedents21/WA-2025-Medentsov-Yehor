@@ -1,3 +1,6 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) session_start();
+?>
 <!DOCTYPE html>
 <html lang="cs">
 <head>
@@ -8,14 +11,11 @@
 </head>
 <body class="bg-light">
 
-  <!-- Header -->
   <header class="bg-primary text-white shadow-sm mb-4">
     <div class="container py-3 d-flex flex-wrap align-items-center justify-content-between rounded-4">
       <div class="d-flex align-items-center mb-2 mb-lg-0 gap-3">
-        <!-- Логотип внутри шапки -->
         <div class="rounded-circle bg-white d-flex align-items-center justify-content-center" style="width:46px; height:46px;">
-          <!-- Здесь твой SVG/PNG, сейчас просто "IT" -->
-          <span class="fw-bold text-primary fs-5">IT</span>
+            <img src="../../imagess/Logo.svg">     
         </div>
         <div>
           <h1 class="fs-4 mb-1 fw-bold text-white">Řízení IT projektů</h1>
@@ -24,13 +24,17 @@
       </div>
       <nav class="nav nav-pills flex-row gap-2">
         <a href="nastenka.php" class="nav-link text-white px-3">Nástěnka</a>
+         <?php if (isset($_SESSION['user_id'])): ?>
+           <a href="post_list.php" class="nav-link text-white px-3">Moje příspěvky</a>
+            <a href="../../ControllersPr/logout.php" class="nav-link text-white px-3">Odhlásit se</a>
+          <?php else: ?>
         <a href="../authPr/register.php" class="nav-link text-white px-3">Registrace</a>
         <a href="../authPr/login.php" class="nav-link text-white px-3">Přihlášení</a>
+          <?php endif; ?>
       </nav>
     </div>
   </header>
 
-  <!-- Основной контент -->
   <main>
     <div class="container py-4">
       <div class="bg-white shadow rounded-4 p-4 mb-5">

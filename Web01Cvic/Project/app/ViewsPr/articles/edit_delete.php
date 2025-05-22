@@ -2,12 +2,11 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-// Стартуем сессию и подключаем нужные файлы
 session_start();
 require_once __DIR__ . '/../../ModelsPr/database.php';
 require_once __DIR__ . '/../../ModelsPr/post.php';
 
-// Проверка авторизации пользователя
+//kontrola prihlaseni
 if (!isset($_SESSION['user_id'])) {
     header("Location: ../../authPr/login.php");
     exit();
@@ -20,13 +19,10 @@ $userId = $_SESSION['user_id'];
 $role = $_SESSION['role'] ?? null;
 
 if ($role === 'admin') {
-    $posts = $postModel->getAll(); // Все посты
+    $posts = $postModel->getAll();
 } else {
-    $posts = $postModel->getUserPosts($userId); // Только свои посты
+    $posts = $postModel->getUserPosts($userId);
 }
-
-
-// Проверяем, редактируется ли пост
 $editMode = false;
 $postToEdit = null;
 if (isset($_GET['edit'])) {
@@ -37,6 +33,7 @@ if (isset($_GET['edit'])) {
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="cs">
 <head>
@@ -51,11 +48,11 @@ if (isset($_GET['edit'])) {
     <div class="container py-3 d-flex flex-wrap align-items-center justify-content-between rounded-4">
         <div class="d-flex align-items-center mb-2 mb-lg-0 gap-3">
             <div class="rounded-circle bg-white d-flex align-items-center justify-content-center" style="width:46px; height:46px;">
-                <span class="fw-bold text-primary fs-5">IT</span>
+            <img src="../../imagess/Logo.svg">     
             </div>
             <div>
                 <h1 class="fs-4 mb-1 fw-bold text-white">
-                    <a href="../articles/blog_home.php" class="text-white text-decoration-none d-inline-block">Řízení IT projektů</a>
+                    <a href="blog_home.php" class="text-white text-decoration-none d-inline-block">Řízení IT projektů</a>
                 </h1>
                 <p class="mb-0 small text-light">Technologický blog o projektovém managementu v IT</p>
                 <?php if (isset($_SESSION['username'])): ?>
@@ -66,17 +63,35 @@ if (isset($_GET['edit'])) {
             </div>
         </div>
         <nav class="nav nav-pills flex-row gap-3 align-items-center">
-            <a href="../articles/create.php" class="nav-link bg-white text-primary fw-semibold px-3 rounded">Přidat post</a>
-            <a href="../articles/nastenka.php" class="nav-link text-white px-3">Nástěnka</a>
-            <a href="../../authPr/login.php" class="nav-link text-white px-3">Odhlásit se</a>
+            <a href="create.php" class="nav-link bg-white text-primary fw-semibold px-3 rounded">Přidat post</a>
+                    <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
+          <a href="users_admin.php" class="nav-link bg-white text-danger fw-semibold px-3 rounded">Správa uživatelů</a>
+        <?php endif; ?>
+            <a href="../../ControllersPr/logout.php" class="nav-link text-white px-3">Odhlásit se</a>
         </nav>
     </div>
 </header>
 
 <main class="flex-grow-1 py-5">
     <div class="container">
-        <h2 class="mb-5 text-center text-dark fw-semibold">Moje příspěvky – editace a mazání</h2>
+        <?php if (isset($_GET['updated'])): ?>
+            <div class="alert alert-success alert-dismissible fade show text-center mb-4" role="alert">
+                Příspěvek byl úspěšně upraven.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Zavřít"></button>
+            </div>
+        <?php elseif (isset($_GET['deleted'])): ?>
+            <div class="alert alert-success alert-dismissible fade show text-center mb-4" role="alert">
+                Příspěvek byl úspěšně smazán.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Zavřít"></button>
+            </div>
+        <?php elseif (isset($_GET['error'])): ?>
+            <div class="alert alert-danger alert-dismissible fade show text-center mb-4" role="alert">
+                Nastala chyba při zpracování akce.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Zavřít"></button>
+            </div>
+        <?php endif; ?>
 
+        <h2 class="mb-5 text-center text-dark fw-semibold">Moje příspěvky – editace a mazání</h2>
         <?php if ($editMode): ?>
         <div class="row justify-content-center mb-5">
             <div class="col-md-8">
@@ -139,5 +154,7 @@ if (isset($_GET['edit'])) {
     &copy; 2025 Yehor Medentsov – Blog o řízení IT projektů
   </div>
 </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

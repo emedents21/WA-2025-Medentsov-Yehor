@@ -7,19 +7,16 @@ class Post {
     }
     
     public function createPost($user_id, $title, $content) {
-        // Сначала проверим, существует ли пользователь с указанным ID
         $checkUserSql = "SELECT COUNT(*) FROM blog_users WHERE id = :user_id";
         $checkStmt = $this->conn->prepare($checkUserSql);
         $checkStmt->bindParam(':user_id', $user_id);
         $checkStmt->execute();
         
         if ($checkStmt->fetchColumn() == 0) {
-            // Пользователь не существует
             error_log("User with ID $user_id does not exist in blog_users table");
             return false;
         }
         
-        // Если пользователь существует, продолжаем создание поста
         $sql = "INSERT INTO blog_posts (user_id, title, content, created_at) VALUES (:user_id, :title, :content, NOW())";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':user_id', $user_id);
@@ -75,8 +72,5 @@ public function getUserPosts($userId) {
         return [];
     }
 }
-
-
-
 }
 ?>
